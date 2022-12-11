@@ -1,0 +1,337 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+ Change Log
+
+Release Notes - S2Graph - Version 0.2.0
+
+** Sub-task
+    * [S2GRAPH-129] - Restrict direct access on Edge's properties from other classes.
+    * [S2GRAPH-130] - Edge.propsWithTs data type should be changed into mutable to support setter interface exist in tp3.
+    * [S2GRAPH-131] - Add actual implementation on interfaces from TinkerPop3 structure package.
+    * [S2GRAPH-148] - Provide Gremlin Plugin
+    * [S2GRAPH-152] - Add IndexType on Management's createIndex
+    * [S2GRAPH-153] - Implement IndexProvider(for Mixed IndexType) class
+    * [S2GRAPH-157] - Check proper apache license header on all files for release 0.2.0
+    * [S2GRAPH-158] - Bug fix on String type InnerVal encoding to use UTF-8 charsetName.
+    * [S2GRAPH-160] - Remove warning while package
+    * [S2GRAPH-161] - Update CHANGES file with correct release version
+    * [S2GRAPH-163] - Update version.sbt after release
+    * [S2GRAPH-180] - Implement missing Management API
+    * [S2GRAPH-197] - Provide S2graphSink for non-streaming dataset
+    * [S2GRAPH-205] - too many initialize S2Graph when writeBatchMutate on S2GraphSink
+    * [S2GRAPH-201] - Provide S2GraphSource
+    * [S2GRAPH-218] - add operations not supported on sql
+    * [S2GRAPH-225] - support custom udf class
+    * [S2GRAPH-251] - Provide JdbcSource/Sink
+
+** Bug
+    * [S2GRAPH-159] - Wrong syntax at a bash script under Linux
+    * [S2GRAPH-168] - Fix args order mismatch when use addServiceColumnProp
+    * [S2GRAPH-176] - Fix compile error on LabelMeta
+    * [S2GRAPH-179] - Add defaultValue on ColumnMeta
+    * [S2GRAPH-178] - Fix null pointer error on BulkLoader
+    * [S2GRAPH-181] - MutateVertices yield different state with different storage type
+    * [S2GRAPH-184] - spark driver exit abnormally in the loader of s2jobs
+    * [S2GRAPH-186] - fix wrong escaping of double quotation marks
+    * [S2GRAPH-187] - Make toQuery use toVertex to parse vertex from query JSON on RequestParser
+    * [S2GRAPH-188] - migrate log4j.properties to log4j2.xml
+    * [S2GRAPH-189] - graphiql.html file not found
+    * [S2GRAPH-190] - Remove unnecessary TC JsonBenchmarkSpec
+    * [S2GRAPH-191] - Providing request / response logging to GraphQL server and removing println
+    * [S2GRAPH-192] - could not find service column when creating the label
+    * [S2GRAPH-195] - could not create indices using S2GraphQL
+    * [S2GRAPH-196] - Apply Query Parameter to Label Fetch in S2GraphQL
+    * [S2GRAPH-220] - Filter clause is not working on AnnoyModelFetcher
+    * [S2GRAPH-228] - GraphQL empty variable fields on post request cause spray.json.DeserializationException
+    * [S2GRAPH-243] - Limit bug on 'graph/getEdges' 
+
+** Improvement
+    * [S2GRAPH-72] - Support Apache TinkerPop and Gremlin
+    * [S2GRAPH-121] - Create `Result` class to hold traverse result edges.
+    * [S2GRAPH-122] - Change data types of Edge/IndexEdge/SnapshotEdge.
+    * [S2GRAPH-132] - Support buffering for 'Increment RPC'
+    * [S2GRAPH-133] - Deprecating Vagrant environment.
+    * [S2GRAPH-135] - Change the way LabelIndexOption is implemented and improve it
+    * [S2GRAPH-165] - Add TinkerPop support documentation on README
+    * [S2GRAPH-167] - Provide Vertex CSV File BulkLoad
+    * [S2GRAPH-169] - Separate multiple functionalities on Storage class into multiple Interface.
+    * [S2GRAPH-170] - Create Interface for S2Edge/S2Vertex/S2Graph.
+    * [S2GRAPH-182] - Version up spark dependencies.
+    * [S2GRAPH-198] - Skip json Decode error and continue.
+    * [S2GRAPH-199] - Changing query more intuitively by using `columnName` instead of `from/to` in label field name.
+    * [S2GRAPH-200] - docker image could not include extra jars.
+    * [S2GRAPH-204] - Avoid N + 1 queries in GraphQL
+    * [S2GRAPH-207] - Provides a way to query data with the value of the Vertex property in a GraphQL query
+    * [S2GRAPH-193] - Add README for S2Jobs sub-project
+    * [S2GRAPH-209] - GlobalIndex supports field data types such as Numeric to enable Range Query
+    * [S2GRAPH-210] - Rename package `mysqls` to `schema`
+    * [S2GRAPH-213] - Abstract Query/Mutation from Storage.
+    * [S2GRAPH-214] - Add REAME for movielens examples
+    * [S2GRAPH-216] - Provide a transform directive in the GraphQL query result.
+    * [S2GRAPH-221] - Unify configurations for bulk and mutate in S2GraphSink.
+    * [S2GRAPH-230] - ResourceManager onEvict cause segmentation fault with AnnoyModelFetcher 
+    * [S2GRAPH-231] - Change the GraphQL type name to a valid string.
+    * [S2GRAPH-232] - Elimination of inefficiency due to duplication in GraphQL schema generation.
+    * [S2GRAPH-235] - Fix typo errors in S2GraphQL MD.
+
+** New Feature
+    * [S2GRAPH-123] - Support different index on out/in direction.
+    * [S2GRAPH-125] - Add options field on Label model for controlling advanced options.
+    * [S2GRAPH-166] - Provide embeddable storage backend using RocksDB.
+    * [S2GRAPH-175] - Provide Elastic Search Index Provider.
+    * [S2GRAPH-172] - Suggest to implement GraphQL as standard web interface for S2Graph.
+    * [S2GRAPH-177] - Add support for createServiceColumn/addVertex APIs on GraphQL.
+    * [S2GRAPH-185] - Support Spark Structured Streaming to work with data in streaming and batch.
+    * [S2GRAPH-183] - Provide batch job to dump data stored in HBase into file.
+    * [S2GRAPH-203] - Support "application/graphql" Content-Type header.
+    * [S2GRAPH-206] - Generalize machine learning model serving.
+    * [S2GRAPH-215] - Implement a Storage Backend for JDBC driver, such as H2, MySql using the Mutator and Fetcher interfaces.
+    * [S2GRAPH-219] - Added query that includes all vertices and associated edges for GraphVisualize.
+    * [S2GRAPH-222] - Support Not logical operator in WhereParser.
+    * [S2GRAPH-223] - Support WhereParser on Vertex.
+    * [S2GRAPH-226] - Provide example spark jobs to explain how to utilize WAL log.
+
+** Task
+    * [S2GRAPH-162] - Update year in the NOTICE file.
+    * [S2GRAPH-211] - Include 's2jobs' test in CI
+    * [S2GRAPH-212] - Fix broken markdown on README.md.
+    * [S2GRAPH-229] - 'Step' abstraction for combinable queries
+    * [S2GRAPH-245] - Remove install hbase step on travis CI.
+    * [S2GRAPH-246] - Integration of documents into the S2Graph project.
+    * [S2GRAPH-248] - HTTP interface integration.
+
+Release 0.1.0 - Released
+
+  NEW FEATURES
+
+    S2GRAPH-34: Provide option to select which field in edge's properties to run timeDecay function (Committed by DOYUNG YOON).
+
+    S2GRAPH-35: Provide normalize option on query (Committed by DOYUNG YOON).
+
+    S2GRAPH-36: Provide Blocking API for Edge/Vertex operations (Committed by DOYUNG YOON).
+
+    S2GRAPH-32: Support variable such as now, day, hour on query (Committed by DOYUNG YOON).
+
+    S2GRAPH-45: Provide way to call specific bucket on experiment (Committed by DOYUNG YOON).
+
+    S2GRAPH-33: Support weighted sum of multiple query results (Committed by DOYUNG YOON).
+
+    S2GRAPH-50: Provide new HBase Storage Schema (Committed by DOYUNG YOON).
+
+    S2GRAPH-60: Add divide operation to scorePropagateOp.
+        	(Contributed by Junki Kim<wishoping@gmail.com>, committed by DOYUNG YOON).
+
+    S2GRAPH-12: Add Label Name Swap Feature.
+        	(Contributed by Hyunsung Jo<hyunsung.jo@gmail.com>, committed by DOYUNG YOON).
+
+  IMPROVEMENT
+
+    S2GRAPH-14: Abstract HBase specific methods in Management and Label (Committed by DOYUNG YOON).
+
+    S2GRAPH-24: Add counter config for readonly graph (Committed by Jaesang Kim).
+
+    S2GRAPH-11: Performance tuning on sort by scoreSum on PostProcess (Committed by DOYUNG YOON).
+
+    S2GRAPH-16: Performance tunning on where parser (Committed by DOYUNG YOON).
+
+    S2GRAPH-37: Extract LockExpireDuration as configuration (Committed by DOYUNG YOON).
+
+    S2GRAPH-39: Better exception message on converting between Json and InnerVal (Committed by DOYUNG YOON).
+
+    S2GRAPH-40: PostProcess.toHashKey gives different hash key with same value when edge's label schema version is different
+                (Committed by DOYUNG YOON).
+
+    S2GRAPH-41: Refactor PostProcess's toSimpleVertexArrJson (Committed by DOYUNG YOON).
+
+    S2GRAPH-44: Provide cache for WhereParser on query (Committed by DOYUNG YOON).
+
+    S2GRAPH-53: Refactor Storage to decide which serializer/deserializer for IndexEdge/SnapshotEdge/Vertex
+        	(Committed by DOYUNG YOON).
+
+    S2GRAPH-55: Add param to enable epoll event loop in experimental netty http server (Committed by daewon).
+
+    S2GRAPH-66: Optimize toEdge, IndexEdgeDeserializable using mutable Map. (Committed by DOYUN GYOON).
+
+    S2GRAPH-22: Add missing shebang line to file.
+        	(Contributed by Injun Song<ijsong@gmail.com>, committed by DOYUNG YOON)
+
+    S2GRAPH-70: Automate the process of building a distribution package
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-82: Merge DeferCache and FutureCache (Committed by Daewon Jeong).
+
+    S2GRAPH-116: using ASM and ByteBuddy to add a proxy to Asynchbase's Scanner.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-117: Cleaner logging library usage.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-115: Release binary artifacts to Maven Central.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-124: Change JSONParser from Trait to Object (Committed by DOYUNG YOON).
+
+    S2GRAPH-127: Refactor ExceptionHander Object into Class (Committed by DOYUNG YOON).
+
+  BUG FIXES
+
+    S2GRAPH-18: Query Option "interval" is Broken.
+                (Contributed by Hyunsung Jo<hyunsung.jo@gmail.com>, committed by daewon)
+
+    S2GRAPH-20: bug fix in query option "sample".
+                (Contributed by Hyunsung Jo<hyunsung.jo@gmail.com>, committed by DOYUNG YOON)
+
+    S2GRAPH-28: _to option gives wrong result on query.
+                (Contributed by Hyunsung Jo<hyunsung.jo@gmail.com>, committed by DOYUNG YOON)
+
+    S2GRAPH-38: Transform option gives wrong result since it transform degree edge too (Committed by DOYUNG YOON).
+
+    S2GRAPH-42: Bug on EdgeTransformer with specific cases (Committed by DOYUNG YOON).
+
+    S2GRAPH-43: Bug on offset when Interval is given on query (Committed by DOYUNG YOON).
+
+    S2GRAPH-19: When query with duration error (Committed by DOYUNG YOON).
+
+    S2GRAPH-63: Condition on partition strong edges and weak edges on mutateEdges is wrong (Committed by DOYUNG YOON).
+
+    S2GRAPH-65: Deferred produce exception (Committed by DOYUNG YOON).
+
+    S2GRAPH-64: incrementCounts yield type case exception (Committed by DOYUNG YOON).
+
+    S2GRAPH-118: Fix compile error on test cases on loader project (Committed by DOYUNG YOON).
+
+    S2GRAPH-120: Netty version is conflict with play 2.5.9 (Committed by DOYUNG YOON).
+
+    S2GRAPH-126: SBT error when there is no ~/.m2/settings.xml
+                 (Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-138: Fixed logging in Play! development mode
+                 (Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+  TASKS
+
+    S2GRAPH-2: Update document and quick start environment to have recent set-up command changes.
+               (Contributed by Hyunsung Jo<hyunsung.jo@gmail.com>, committed by daewon)
+
+    S2GRAPH-5: Add Apache RAT to valid LICENSE errors. (Committed by DOYUNG YOON).
+
+    S2GRAPH-17: Remove unnecessary abstraction layer, Storage. (Committed by DOYUNG YOON).
+
+    S2GRAPH-57: Change package names into org.apahce.s2graph. (Committed by DOYUNG YOON).
+
+    S2GRAPH-4: Update license headers in source codes. (Committed by DOYUNG YOON).
+
+    S2GRAPH-61: Update README.md to have Apache mailing list.
+        	(Contributed by Hyunsung Jo<hyunsung.jo@gmail.com>, committed by DOYUNG YOON)
+
+    S2GRAPH-71: Missing resolver in plugin settings.
+                (Contributed by Injun Song<ijsong@gmail.com>, committed by DOYUNG YOON)
+
+    S2GRAPH-30: Typo in README. (Contributed by Hyunsung Jo<hyunsung.jo@gmail.com>, committed by DOYUNG YOON).
+
+    S2GRAPH-105: remove the full path on packaged tarball (Committed by Sergio Fernández).
+
+  SUB TASKS
+
+    S2GRAPH-9: Provide rest server using netty. (Committed by daewon).
+
+    S2GRAPH-7: Abstract common codes for rest project into s2core. (Committed by daewon).
+
+    S2GRAPH-31: Remove playframework dependencies on s2core/build.sbt. (Committed by DOYUNG YOON).
+
+    S2GRAPH-69: Change IndexEdge's props data type. (Committed by DOYUNG YOON).
+
+    S2GRAPH-87: LICENSE file should be changed. (Committed by Sergio Fernández).
+
+    S2GRAPH-73: Add an SBT task and relevant scripts to construct a package for distribution.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-74: Add a script that starts/stops a local hbase server.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-75: Use an embedded database as the default metadata storage.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-81: Separate Serializable's toKeyValues into 3, toRowKey, toQualifier, toValue. (Committed by DOYUNG YOON).
+
+    S2GRAPH-88: Add DISCLAIMER, LICENSE, NOTICE on packaging process.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON)
+
+    S2GRAPH-89: Change version number on project. (Committed by DOYUNG YOON).
+
+    S2GRAPH-91: Remove custom repository on project's build.sbt (Committed by DOYUNG YOON).
+
+    S2GRAPH-93: Remove MySQL JDBC driver (Committed by DOYUNG YOON).
+
+    S2GRAPH-98: Make test cases on multiple projects run sequentially (Committed by DOYUNG YOON).
+
+    S2GRAPH-99: Reduce number of test run on test cases on org.apache.s2graph.rest.play.benchmark (Committed by DOYUNG YOON).
+
+    S2GRAPH-96: Remove unmanaged dependencies(asynchbase) and speficy it on build.sbt. (Committed by DOYUNG YOON).
+
+    S2GRAPH-97: Add KEYS file (Committed by DOYUNG YOON).
+
+    S2GRAPH-95: Add sbt-pgp plugin on plugins.sbt (Committed by DOYUNG YOON).
+
+    S2GRAPH-92: Add proper license headers on files with unknown licenses (Committed by DOYUNG YOON).
+
+    S2GRAPH-100: Add BUILD.md to explain how to package from source, then add it into REAME.md (Committed by DOYUNG YOON).
+
+    S2GRAPH-94: Add description for project layout on REAME.
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON).
+
+    S2GRAPH-103: Remove dependencies on custom fork of asynchbase (Committed by DOYUNG YOON).
+
+    S2GRAPH-102: Add more configuration optoins in application.conf (Committed by DOYUNG YOON).
+
+    S2GRAPH-84: Test-case compilation error on `s2counter_loader` project (Committed by Jaesang Kim).
+
+    S2GRAPH-104: force scalaz-stream, netty-http-pipelining dependencies version which is available on maven central (Committed by DOYUNG YOON).
+
+    S2GRAPH-109: Merge duplicate test.sh into one same as `Your First Graph` on README.md (Committed by DOYUNG YOON).
+
+    S2GRAPH-106: Remove warnings while package (Committed by DOYUNG YOON).
+
+    S2GRAPH-112: Additional refinements in README.md
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON).
+
+    S2GRAPH-111: typo fix: getServiceLable -> getServiceLabel
+        	(Contributed by Jong Wook Kim<jongwook@nyu.edu>, committed by DOYUNG YOON).
+
+    S2GRAPH-110: Add more committer's public key to KEYS file (Committed by DOYUNG YOON).
+
+    S2GRAPH-113: Add license header on `bin/example.sh` (Committed by DOYUNG YOON).
+
+    S2GRAPH-114: `MethodNotSupportedException` class in s2counter_core project miss license header (Committed by DOYUNG YOON).
+
+    S2GRAPH-136: Validate TinkerPop3 interface with gremlin-test suite. (Committed by DOYUNG YOON).
+
+  TEST
+
+    S2GRAPH-21: Change PostProcessBenchmarkSpec not to store and fetch test data from storage. (Committed by DOYUNG YOON).
+
+    S2GRAPH-108: Support continuous integration test.
+    (Contributed by Injun Song<ijsong@gmail.com>, committed by DOYUNG YOON)
+
+    S2GRAPH-144: [S2GRAPH-144] Travis icon in README is not proper link
+    (Contributed by Injun Song<ijsong@gmail.com>, committed by Daewon Jeong)
+
+    S2GRAPH-145: [S2GRAPH-145] Improve travis to cache maven directory
+    (Contributed by Injun Song<ijsong@gmail.com>, committed by Daewon Jeong)
